@@ -26,10 +26,15 @@ def menu():
                     password = int(input("\nPlease enter your password to encode: "))
                 except:
                     print("Not a valid option!")
+                    continue
                 encoded_password = encode(password)
                 print("Your password has been encoded and stored!")
             case 2:
-                print(f"The encoded password is {encoded_password}, and the original password is {decode(password)}.")
+                if password != "":
+                    print(f"The encoded password is {encoded_password}, and the original password is {decode(password)}.")
+                else:
+                    print("No password!")
+                    continue
             case 3:
                 break
             case _:
