@@ -31,7 +31,8 @@ def menu():
                 print("Your password has been encoded and stored!")
             case 2:
                 if password != "":
-                    print(f"The encoded password is {encoded_password}, and the original password is {decode(password)}.")
+                    print(
+                        f"The encoded password is {encoded_password}, and the original password is {decode(password)}.")
                 else:
                     print("No password!")
                     continue
@@ -39,6 +40,7 @@ def menu():
                 break
             case _:
                 print("Not a valid option!")
+
 
 def encode(password):
     stringify = ""
@@ -68,10 +70,24 @@ def encode(password):
                 pass
     return int(stringify)
 
+
 def decode(password):
+    password_decoded_list = []
+    for i in range(len(password)):
+        if password < 3:
+            match password[i]:
+                case 0:
+                    password_decoded_list.append('7')
+                case 1:
+                    password_decoded_list.append('8')
+                case 2:
+                    password_decoded_list.append('9')
+        else:
+            password_decoded_list.append(str(int(password[i])-3))
+    password = ''.join(password_decoded_list)               
     return password
+
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     menu()
-
